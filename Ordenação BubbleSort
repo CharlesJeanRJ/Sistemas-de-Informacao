@@ -1,0 +1,48 @@
+#include<stdlib.h>
+#include<stdio.h>
+void bubble(int *pv, int tam)
+{
+     int cont, i, a;
+     do{
+         cont=0;
+         for(i=0;i<tam;i++)
+         {
+             if(*(pv+i)>*(pv+(i+1)))
+             {
+                 a=*(pv+i);
+                 *(pv+i)=*(pv+(i+1));
+                 *(pv+(i+1))=a;
+                 cont++;
+             }
+         }
+     }while(cont>0);
+}
+
+void leia(int *pv, int tam)
+{
+     int i;
+     for(i=0;i<tam;i++)
+     {
+         printf("Entre com o elemento %d: ",i+1);
+         scanf("%d",pv+i);
+     }
+}
+
+void mostra(int *pv, int tam)
+{
+     int i;
+     for(i=0;i<tam;i++)
+         printf("%d ",*(pv+i));
+}
+
+const int max=5;
+
+int main()
+{
+    int vetor[max];
+    leia(vetor,max);
+    bubble(vetor,max);
+    mostra(vetor,max);
+    system("pause");
+    return 0;
+}
