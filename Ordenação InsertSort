@@ -1,0 +1,49 @@
+#include<stdlib.h>
+#include<stdio.h>
+void insert(int *pv, int tam)
+{
+     int num, i, j;
+     for(i=1;i<tam;i++)
+     {
+         if(*(pv+i)<*(pv+(i-1)))
+         {
+             j=i;
+             num=*(pv+i);
+             while((j>0)&&(num<*(pv+(j-1))))
+             {
+                 *(pv+j)=*(pv+(j-1));
+                 j--;
+             }
+             *(pv+j)=num;
+         }
+     }
+}
+
+void leia(int *pv, int tam)
+{
+     int i;
+     for(i=0;i<tam;i++)
+     {
+         printf("Entre com o elemento %d: ",i+1);
+         scanf("%d",pv+i);
+     }
+}
+
+void mostra(int *pv, int tam)
+{
+     int i;
+     for(i=0;i<tam;i++)
+         printf("%d ",*(pv+i));
+}
+
+const int max=5;
+
+int main()
+{
+    int vetor[max];
+    leia(vetor,max);
+    insert(vetor,max);
+    mostra(vetor,max);
+    system("pause");
+    return 0;
+}
